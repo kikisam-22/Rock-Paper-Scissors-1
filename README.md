@@ -3,7 +3,7 @@ This is the first JavaScript Project from The-Odin-Project.
 The game is based on a simple grade-school-game "ROCK PAPER SCISSORS" 
 The game is played against the computer in the console (the version with a GUI will be available later on).
 
-Below you will find the pseudocode/algorithm of the project (note that those will be found in the code as well as comments). 
+Below you will find the pseudocode/algorithm of the project (note that the step will be referenced in the script.js file as comments). 
 
 Paper > Rock | Rock > Scissors | Scissors > Paper
 
