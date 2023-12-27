@@ -1,67 +1,136 @@
+let userPoints = 0;
+let computersPoints = 0;
+let roundWinner = "";
+
+
 /* Step 1 : Computer's Choice  */
 
 function getComputerChoice() {
     let computerChoice = "";
     const availableChoice = ["ROCK", "PAPER", "SCISSORS"]
-    const randomIndex = Math.floor(Math.random() * availableChoice.length);
-    computerChoice = availableChoice[randomIndex];
-    return computerChoice
+    const randomIndex = Math.floor(Math.random() * 3);
+    return computerChoice = availableChoice[randomIndex];
+     
 }
 
 /* Step 2 : Define who is the winner */
 
 function winnerIs(playerSelection, computerSelection) {
-    let messageToDisplay = ``;
-    playerSelection = playerSelection.toUpperCase();
     if (playerSelection == computerSelection){
-        messageToDisplay = `It's a TIE !!`
+        roundWinner = "Tie";
     } else if (playerSelection == "PAPER" && computerSelection == "ROCK" || playerSelection == "ROCK" && computerSelection == "SCISSORS" || playerSelection == "SCISSORS" && computerSelection === "PAPER"){
-        messageToDisplay = `You WIN this round !! ${playerSelection} beats ${computerSelection}`;
+        roundWinner = "Player";
+        userPoints++;
     } else {
-        messageToDisplay = `Computer WIN this round !! ${computerSelection} beats ${playerSelection}`;
-    }
-    return messageToDisplay
-}
-
-
-/* Step 3 : Game with user's input | "best-of-five game that keeps score and reports a winner or loser at the end"*/
-
-function game(){
-    let userPoints = 0;
-    let computerPoints = 0;
-    let roundNumber = 1;
-    while (roundNumber <= 5){
-        console.log("User points : ",userPoints,"   Computer points : ",computerPoints,"     Round : ", roundNumber);
-
-        let computerChoose = getComputerChoice();
-        let userChoice = prompt("Please, choose between 'ROCK', 'PAPER' or 'SCISSORS").toUpperCase();
-        console.log(`You choose ${userChoice} and computer choose ${computerChoose}`)
-        
-        whoWinMessage = winnerIs(userChoice, computerChoose);
-        console.log(whoWinMessage);
-
-        console.log("")
-        console.log("")
-        
-        if (whoWinMessage == `You WIN this round !! ${userChoice} beats ${computerChoose}`) {
-            userPoints += 1;
-        } else if(whoWinMessage == `Computer WIN this round !! ${computerChoose} beats ${userChoice}`) {
-            computerPoints += 1;
-        }else {
-            //do nothing;
-        }
-        
-        roundNumber += 1
-    }
-
-    console.log("User points : ",userPoints,"   Computer points : ",computerPoints)
-    if (userPoints == computerPoints){
-        console.log("IT'S A TIE GAME")
-    } else if (userPoints > computerPoints) {
-        console.log("YOU WIN THE GAME")
-    } else {
-        console.log("COMPUTER WINS")
+        roundWinner = "Computer";
+        computersPoints++;
     }
 }
 
-game()
+/* End of game function */
+
+function endOfGame(){
+    if (userPoints === 5 || computersPoints === 5){
+        endMessage.classList.remove("hidden");
+        showWinnerGame()
+    } 
+}
+
+
+// UI 
+
+const rockButton = document.querySelector("#rockBtn");
+const paperButton = document.querySelector("#paperBtn");
+const scissorsButton = document.querySelector("#scissorsBtn");
+const playerPoints = document.querySelector("#player-points");
+const computerPoints = document.querySelector("#computer-points");
+const roundResult = document.querySelector("#round-result");
+const playerChoice = document.querySelector("#player-choice");
+const computerChoice = document.querySelector("#computer-choice");
+const divResult = document.querySelector("#results");
+const endMessage = document.querySelector("#end-message");
+const messageToDisplay = document.querySelector(".message");
+const restartButton = document.querySelector("#restartBtn");
+
+
+
+rockButton.addEventListener('click', () => grabSelection("ROCK"));
+paperButton.addEventListener('click', () => grabSelection("PAPER"));
+scissorsButton.addEventListener('click', () => grabSelection("SCISSORS"));
+restartButton.addEventListener('click', () => restartGame() )
+
+
+
+
+
+
+function grabSelection(playerChoose){
+    const computerChoose = getComputerChoice();
+    winnerIs(playerChoose, computerChoose);
+    updateSelection(playerChoose, computerChoose);
+    updateResult();
+    endOfGame();
+}
+
+function updateSelection(playerChoose, computerChoose) {
+    switch (playerChoose) {
+        case "ROCK":
+            playerChoice.textContent = "🪨";
+            break;
+        case "PAPER":
+            playerChoice.textContent = "📄"
+            break;
+        case "SCISSORS":
+            playerChoice.textContent = "✄"
+            break;
+        default:
+            ""
+    }
+
+    switch (computerChoose) {
+        case "ROCK":
+            computerChoice.textContent = "🪨";
+            break;
+        case "PAPER":
+            computerChoice.textContent = "📄"
+            break;
+        case "SCISSORS":
+            computerChoice.textContent = "✄"
+            break;
+        default:
+            ""
+    }
+}
+
+function updateResult(){
+    if (roundWinner== "Tie"){
+        roundResult.textContent = "It's a Tie";
+    } else if (roundWinner=="Player"){
+        roundResult.textContent = "You won this round"
+    } else if (roundWinner == "Computer"){
+        roundResult.textContent = "Computer won this round"
+    }
+    playerPoints.textContent = `Player Points : ${userPoints}`;
+    computerPoints.textContent = `Computer Points : ${computersPoints}`;
+}
+
+function showWinnerGame(){
+    if (userPoints == 5){;
+        messageToDisplay.textContent = "YOU WON THIS GAME!";
+    } else if (computersPoints == 5) {
+        messageToDisplay.textContent = "COMPUTER WON THIS GAME!";
+    }
+}
+
+
+function restartGame(){
+    playerChoice.textContent = "?";
+    computerChoice.textContent = "?";
+    userPoints = 0;
+    computersPoints = 0;
+    playerPoints.textContent = `Player Points : ${userPoints}`;
+    computerPoints.textContent = `Computer Points : ${computersPoints}`
+    roundResult.textContent = "";
+    messageToDisplay.textContent = "";
+    endMessage.classList.add("hidden")
+}

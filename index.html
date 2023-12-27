@@ -3,17 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title> Rock Paper Scissors</title>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
     <h1>ROCK! PAPER! SCISSORS! SHOOT! </h1>
+    <h2> Rules :
+        <p> First to earn 5 points win the game ! </p>
+    </h2>
 
-    <div>
-        <button id="rock">ROCK</button>
-        <button id="paper">PAPER</button>
-        <button  id="scissors">SCISSORS</button>
+    <p class="choose-weapon"> Choose your weapon ! </p>
+
+    <div class="btn-container">
+        <button class="btn" id="rockBtn">🪨</button>
+        <button class="btn" id="paperBtn">📄</button>
+        <button  class ="btn" id="scissorsBtn">✄</button>
     </div>
 
+    <div id="results">
+        <div id="player-result">
+            <p>Player</p>
+            <div id="player-choice">?</div>
+            <p id="player-points"> Player Points : 0 </p>
+        </div> 
+        <div id="round-result"></div>
+        <div id="computer-result">
+            <p>Computer</p>
+            <div id="computer-choice">?</div>
+            <p id="computer-points">Computer POints : 0</p>
+        </div>
+    </div>
+    <div id="end-message" class="hidden">
+        <div class="message"></div>
+        <button id="restartBtn"> ↻ </button>
+    </div>
     <div id="footer">Copyright © Kikisam-22</div>
 </body>
 </html>

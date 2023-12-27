@@ -1,0 +1,116 @@
+*{
+    margin : 0; 
+    padding : 0;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: black;
+    color : greenyellow;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,121,26,1) 89%, rgba(255,255,255,1) 100%);
+    padding: 50px 50px;
+    border : 0;
+}
+
+#footer{
+    padding : 20px;
+    text-align: center;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,121,26,1) 89%, rgba(255,255,255,1) 100%);
+
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    gap : 10px;
+    color : #fff;
+}
+
+.choose-weapon{
+    text-align: center;
+    background-color: #fff;
+    padding : 20px;
+    font-weight: 900;
+    color : black
+}
+
+.btn-container{
+    display: flex;
+    gap : 20px;
+    padding: 30px;
+    justify-content: space-around;
+    margin: 0px auto;
+}
+
+.btn{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    font-size: 50px;
+}
+
+#results{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap : 20px;
+    margin : 0px auto;
+    position : relative;
+}
+
+#player-result, #computer-result{
+    border: 2px solid #fff;
+    border-radius: 18px;
+    width: 200px;
+    height: 200px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-choice, #computer-choice{
+    font-size: 40px;
+}
+
+#end-message{
+    width : 900px;
+    height: 560px ; 
+    border: 2px solid #fff;
+    border-radius: 18px;
+    background-color: black;
+    position : absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 30px ; 
+    margin : auto;
+    left:50%; 
+    top:62%; 
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+#restartBtn{
+    padding : 20px 50px;
+    border-radius: 18px;
+    font-size: 40px;
+}
