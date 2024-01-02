@@ -1,7 +1,7 @@
 # Rock-Paper-Scissors-1
 This is the first JavaScript Project from The-Odin-Project.
 The game is based on a simple grade-school-game "ROCK PAPER SCISSORS" 
-The game is played against the computer in the console (the version with a GUI will be available later on).
+LIVE : https://kikisam-22.github.io/Rock-Paper-Scissors-1/
 
 Below you will find the pseudocode/algorithm of the project (note that the step will be referenced in the script.js file as comments). 
 
